@@ -1,4 +1,8 @@
-# hex to bytes
-HEX = "63727970746f7b596f755f77696c6c5f62655f776f726b696e675f776974685f6865785f737472696e67735f615f6c6f747d"
+# encode into base64
 
-print(bytes.fromhex(HEX))
+import base64
+
+HEX = "72bca9b68fc16ac7beeb8f849dca1d8a783e8acf9679bf9269f7bf"
+
+
+print(base64.b64encode(bytes.fromhex(HEX)))

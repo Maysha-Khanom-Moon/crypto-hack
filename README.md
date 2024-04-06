@@ -9,5 +9,12 @@
 
 - hex:
     - ciphertext commonly has bytes which is not portable ascii characters.
-    - bytes.fromhex(): covert hex to bytes
-    - .hex(): bytes to hex representation
+    - bytes.fromhex(): hex decode into bytes
+    - .hex(): bytes encode into hex
+
+- base64:
+    - import base64
+    - common encoding scheme
+    - hex string decode into bytes
+    - then encode into base64
+    - base64.b64encode()
