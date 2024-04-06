@@ -1,8 +1,14 @@
-# encode into base64
+# numbers to bytes
+"""
+message: HELLO
+ascii bytes: [72, 69, 76, 76, 79]
+hex bytes: [0x48, 0x45, 0x4c, 0x4c, 0x4f]
+base-16: 0x48454c4c4f
+base-10: 310400273487
+"""
 
-import base64
+from Crypto.Util.number import long_to_bytes
 
-HEX = "72bca9b68fc16ac7beeb8f849dca1d8a783e8acf9679bf9269f7bf"
+number = 11515195063862318899931685488813747395775516287289682636499965282714637259206269
 
-
-print(base64.b64encode(bytes.fromhex(HEX)))
+print(long_to_bytes(number))

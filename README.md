@@ -18,3 +18,10 @@
     - hex string decode into bytes
     - then encode into base64
     - base64.b64encode()
+
+- bytes and big integers:
+    - RSA works on numbers
+    - form Crypto.Util.number import bytes_to_long
+        - bytes into number
+    - form Crypto.Util.number import long_to_bytes
+        - number into bytes
