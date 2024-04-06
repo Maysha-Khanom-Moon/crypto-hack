@@ -1,6 +1,20 @@
 #!/usr/bin/env python3
 
-# base16
-hex = "63727970746f7b596f755f77696c6c5f62655f776f726b696e675f776974685f6865785f737472696e67735f615f6c6f747d"
+"""
+message: HELLO
+ascii bytes: [72, 69, 76, 76, 79]
+hex bytes: [0x48, 0x45, 0x4c, 0x4c, 0x4f]
+base-16: 0x48454c4c4f
+base-10: 310400273487
+"""
 
-print(bytes.fromhex(hex))
+# from Crypto.Util.number import bytes_to_long
+from Crypto.Util.number import long_to_bytes
+
+number = 11515195063862318899931685488813747395775516287289682636499965282714637259206269
+
+number = long_to_bytes(number)
+
+number = number.decode()
+
+print(number)
