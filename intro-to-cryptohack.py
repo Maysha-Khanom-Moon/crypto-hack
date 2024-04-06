@@ -1,5 +1,16 @@
-from pwn import xor
+label = "label"
+ans = ""
 
-ans = xor("label", 13).decode()
+for char in label:
+    # conver char to unicode integer
+    char = ord(char)
+    
+    # xor with 13
+    char = char ^ 13
+    
+    # convert to char
+    char = chr(char)
+    
+    ans += char
 
-print("crypto{"+ans+"}")
+print(ans)
