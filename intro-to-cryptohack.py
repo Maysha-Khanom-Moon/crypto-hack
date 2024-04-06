@@ -1,15 +1,33 @@
-from pwn import xor
+#!/usr/bin/env python3
 
-key = "73626960647f6b206821204f21254f7d694f7624662065622127234f726927756d"
-key = bytes.fromhex(key)
+from pwn import * # pip install pwntools
+import json
 
+HOST = "socket.cryptohack.org"
+PORT = 11112
 
-for i in range(len(key)):
-    flag = xor(i, key)
-    print(flag)
-    
-# from all of these flags find the crypto flag
+r = remote(HOST, PORT)
 
 
-# xor: num ^ string, num ^ bytes, bytes ^ bytes
-# we can't do xor directly from hex
+def json_recv():
+    line = r.readline()
+    return json.loads(line.decode())
+
+def json_send(hsh):
+    request = json.dumps(hsh).encode()
+    r.sendline(request)
+
+
+print(r.readline())
+print(r.readline())
+print(r.readline())
+print(r.readline())
+
+request = {
+    "buy": "flag"
+}
+json_send(request)
+
+response = json_recv()
+
+print(response)
