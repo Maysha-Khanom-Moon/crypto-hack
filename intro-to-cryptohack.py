@@ -1,33 +1,13 @@
-#!/usr/bin/env python3
+from pwn import xor
 
-from pwn import * # pip install pwntools
-import json
+HEX = "0e0b213f26041e480b26217f27342e175d0e070a3c5b103e2526217f27342e175d0e077e263451150104"
 
-HOST = "socket.cryptohack.org"
-PORT = 11112
+HEX = bytes.fromhex(HEX)
 
-r = remote(HOST, PORT)
+# key = str.encode('crypto{FLAG}')
+# following that we got an idea about key
+key = str.encode('myXORkey')
 
-
-def json_recv():
-    line = r.readline()
-    return json.loads(line.decode())
-
-def json_send(hsh):
-    request = json.dumps(hsh).encode()
-    r.sendline(request)
-
-
-print(r.readline())
-print(r.readline())
-print(r.readline())
-print(r.readline())
-
-request = {
-    "buy": "flag"
-}
-json_send(request)
-
-response = json_recv()
-
-print(response)
+# for xor operation: encoded form is better
+xored = xor(HEX, key)
+print(xored)
